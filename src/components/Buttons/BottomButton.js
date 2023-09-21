@@ -2,16 +2,14 @@ import "../css/BottomButton.css";
 
 const BottomButton = (props) => {
   const bottomButtonStyle = {
-    position: "relative",
-    top: "89vh",
-
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
 
-    width: "90%",
+    width: "100%",
     padding: "20px 10px",
     margin: "auto",
+    marginBottom: "10px",
 
     border: "none",
     borderRadius: "4px",
@@ -23,12 +21,12 @@ const BottomButton = (props) => {
   };
 
   return (
-    <>
+    <div>
       <button className="btn" style={bottomButtonStyle} onClick={props.onClick}>
         <img src={props.imgSrc} />
         {props.text}
       </button>
-    </>
+    </div>
   );
 };
 

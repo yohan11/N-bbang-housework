@@ -2,6 +2,11 @@ body {
   font-family: Pretendard;
 }
 
+div {
+  width: 100%;
+  box-sizing: border-box;
+}
+
 .btn img {
   width: 20px;
   margin-right: 10px;
