@@ -8,7 +8,6 @@ const Intro = () => {
 
   return (
     <>
-      <img className="background_img" src="/img/Intro_img.png" />
       <BottomButton
         text="카카오로 로그인"
         backgroundColor="#FEE20B"

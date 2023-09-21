@@ -1,8 +1,8 @@
 body {
   overflow: hidden;
-}
+  background-image: url(https://github.com/yohan11/N-bbang-housework/assets/40304565/3ff09106-76fa-4670-b475-29550a9519f3);
+  background-repeat: no-repeat;
+  background-size: 100% auto;
 
-.background_img {
-  max-width: 100%;
-  height: auto;
+  font-family: Pretendard;
 }

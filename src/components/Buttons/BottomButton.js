@@ -2,8 +2,8 @@ import "../css/BottomButton.css";
 
 const BottomButton = (props) => {
   const bottomButtonStyle = {
-    position: "sticky",
-    bottom: "35px",
+    position: "relative",
+    top: "89vh",
 
     display: "flex",
     alignItems: "center",
