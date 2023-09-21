@@ -17,6 +17,7 @@ const BottomButton = (props) => {
     borderRadius: "4px",
 
     fontSize: "16px",
+    cursor: "pointer",
     backgroundColor: props.backgroundColor,
     color: props.textColor,
   };
