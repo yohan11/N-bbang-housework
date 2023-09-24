@@ -22,7 +22,12 @@ const BottomButton = (props) => {
 
   return (
     <div>
-      <button className="btn" style={bottomButtonStyle} onClick={props.onClick}>
+      <button
+        className="btn"
+        style={bottomButtonStyle}
+        onClick={props.onClick}
+        disabled={!props.buttonActive}
+      >
         <img src={props.imgSrc} />
         {props.text}
       </button>
