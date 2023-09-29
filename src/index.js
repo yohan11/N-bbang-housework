@@ -6,7 +6,6 @@ import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import SignUp from "./pages/SignUp";
 import Home from "./pages/Home";
-import Group from "./pages/Group";
 import AddWork from "./pages/AddWork";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -17,7 +16,6 @@ root.render(
       <Route exact path="KAKAO/login" element={<App />} />
       <Route path="signup" element={<SignUp />}></Route>
       <Route path="home" element={<Home />}></Route>
-      <Route path="group" element={<Group />}></Route>
       <Route path="add-work" element={<AddWork />}></Route>
     </Routes>
   </BrowserRouter>,
