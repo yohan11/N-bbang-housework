@@ -1,4 +1,4 @@
-import "../css/BottomButton.css";
+import "./css/BottomButton.css";
 
 const BottomButton = (props) => {
   const bottomButtonStyle = {

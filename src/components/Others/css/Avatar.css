@@ -1,0 +1,13 @@
+.Avatar {
+  width: fit-content;
+  position: relative;
+}
+
+.Avatar > img {
+  width: 30px;
+  height: 30px;
+
+  border-radius: 50%;
+  border: white 1px solid;
+  object-fit: cover;
+}

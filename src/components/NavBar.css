@@ -1,0 +1,31 @@
+.NavBar {
+  display: flex;
+  flex-direction: column;
+
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  padding: 18px;
+
+  border-radius: 20px 20px 0 0;
+  background-color: white;
+  box-shadow: -1px -1px 20px rgba(143, 143, 143, 0.2);
+}
+
+.menus {
+  display: flex;
+  justify-content: space-around;
+}
+
+.menus > img {
+  width: 30px;
+  height: 30px;
+}
+
+.selected {
+  filter: opacity(0.5) drop-shadow(0 0 0 black);
+}
+
+.unselected {
+  color: gray;
+}

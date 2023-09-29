@@ -1,0 +1,14 @@
+.CategoryBox {
+  background-color: #e5f8dc;
+  padding: 15px 20px;
+  margin-right: 10px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  white-space: nowrap;
+  border-radius: 13px;
+  border: none;
+  cursor: pointer;
+}

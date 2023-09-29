@@ -1,0 +1,31 @@
+.Home {
+  padding: 30px;
+
+  overflow: scroll;
+}
+
+.group_boxes {
+  display: flex;
+
+  /*부모요소의 패딩을 무시하고 꽉채운 후, 원하는 대로 패딩 추가*/
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  padding-left: 30px;
+
+  overflow: scroll;
+}
+
+.date_boxes {
+  display: flex;
+  justify-content: space-between;
+}
+
+.todo_list_title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav {
+  position: relative;
+}

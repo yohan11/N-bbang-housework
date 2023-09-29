@@ -1,0 +1,48 @@
+body {
+  margin: 0;
+}
+
+.AddWork {
+  padding: 30px;
+}
+
+.AddContents > div {
+  margin-bottom: 30px;
+}
+
+.AddContents > div > input {
+  width: 100%;
+  padding: 15px 15px;
+  margin-top: 20px;
+
+  border: 1px #dadada solid;
+  border-radius: 13px;
+  box-sizing: border-box;
+  overflow: scroll;
+}
+
+.AddContents > div > input::placeholder {
+  color: #dadada;
+  font-size: 1rem;
+}
+
+.category_boxes {
+  display: flex;
+
+  /*부모요소의 패딩을 무시하고 꽉채운 후, 원하는 대로 패딩 추가*/
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  padding-left: 30px;
+
+  overflow: scroll;
+}
+
+.AddContents > div > input[type="date"]::before {
+  content: attr(data-placeholder);
+  width: 100%;
+}
+
+.AddContents > div > input[type="date"]:focus::before,
+.AddContents > div > input[type="date"]:valid::before {
+  display: none;
+}

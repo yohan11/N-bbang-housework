@@ -1,0 +1,16 @@
+.CircleButton {
+  cursor: pointer;
+
+  display: inline-flex;
+
+  position: absolute;
+  bottom: 50%;
+  left: 45%;
+}
+
+.CircleButton > a > img {
+  background-color: rgb(15, 190, 98);
+  border-radius: 50%;
+
+  padding: 5px;
+}

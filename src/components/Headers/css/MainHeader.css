@@ -1,0 +1,18 @@
+.MainHeader {
+  display: flex;
+  align-items: flex-start;
+
+  margin-top: 5%;
+
+  font-family: Pretendard;
+}
+
+.house_info {
+  margin: auto;
+}
+
+.MainHeader > span > img {
+  position: absolute;
+  right: 25px;
+  padding-top: 1%;
+}
