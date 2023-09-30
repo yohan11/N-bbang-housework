@@ -1,6 +1,6 @@
 .MainHeader {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
 
   margin-top: 5%;
 
@@ -11,8 +11,14 @@
   margin: auto;
 }
 
-.MainHeader > span > img {
-  position: absolute;
-  right: 25px;
-  padding-top: 1%;
+.MainHeader > .right_icon > img {
+}
+
+.right_icon {
+  margin-top: 2%;
+}
+
+.left_icon {
+  display: flex;
+  align-items: center;
 }

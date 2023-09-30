@@ -12,9 +12,10 @@ const BottomButton = (props) => {
     marginBottom: "10px",
 
     border: "none",
-    borderRadius: "4px",
+    borderRadius: props.borderRadius,
 
     fontSize: "16px",
+    fontWeight: props.fontWeight,
     cursor: "pointer",
     backgroundColor: props.backgroundColor,
     color: props.textColor,
@@ -28,7 +29,7 @@ const BottomButton = (props) => {
         onClick={props.onClick}
         disabled={!props.buttonActive}
       >
-        <img src={props.imgSrc} />
+        {props.imgSrc && <img src={props.imgSrc} />}
         {props.text}
       </button>
     </div>
