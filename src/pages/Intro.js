@@ -17,6 +17,9 @@ const Intro = () => {
   const navigate = useNavigate();
   const loginPath = useLocation();
 
+  const [accessToken, setAccessToken] = useState();
+  const [refreshToken, setRefreshToken] = useState();
+
   // 페이지 로드 시 카카오, 네이버 로그인 URL을 받아옵니다.
   useEffect(() => {
     fetch("https://jubujob.com/auth/KAKAO/loginPage")
@@ -88,15 +91,10 @@ const Intro = () => {
           return res.json();
         })
         .then((json) => {
-          sessionStorage.setItem(
-            "accessToken",
-            JSON.stringify(json.resObj.accessToken),
-          );
-          sessionStorage.setItem(
-            "refreshToken",
-            JSON.stringify(json.resObj.refreshToken),
-          );
-          setUserRole(json.resObj.role);
+          sessionStorage.setItem("accessToken", json.resObj.accessToken);
+          sessionStorage.setItem("refreshToken", json.resObj.refreshToken);
+          setAccessToken(sessionStorage.getItem("accessToken"));
+          setRefreshToken(sessionStorage.getItem("refreshToken"));
         })
         .catch((error) => {
           console.error("API 요청 중 오류 발생:", error);
@@ -104,17 +102,53 @@ const Intro = () => {
     }
   }, [code, state]);
 
+  // 세션 스토리지에 저장되어있는 토큰을 가져와서 api를 호출하여 유저 정보를 받아옵니다.
+  useEffect(() => {
+    if (accessToken && refreshToken) {
+      fetch("https://jubujob.com/auth/info", {
+        method: "GET",
+        headers: {
+          "content-type": "application/json",
+          Authorization: `Bearer ${accessToken} ${refreshToken}`,
+        },
+      })
+        .then((res) => {
+          return res.json();
+        })
+        .then((json) => {
+          setUserRole(json.resObj.role);
+        });
+    }
+  }, [accessToken, refreshToken]);
+
   // 받아온 응답 값 내 user의 역할에 따라 다른 페이지로 이동합니다.
   useEffect(() => {
-    if (userRole === "UNAUTH") {
-      navigate("/signup");
-    } else if (userRole === "AUTH") {
-      navigate("/main");
+    if (userRole) {
+      if (userRole === "UNAUTH") {
+        navigate("/home");
+      } else if (userRole === "AUTH") {
+        navigate("/home");
+      }
     }
   }, [userRole]);
 
   return (
     <div className="Intro">
+      <div className="intro_title">
+        <div className="ft2Xlg boldTxt whiteTxt textLeft">
+          집안일, 어떻게 <br />
+          분담하고 계신가요?
+        </div>
+        <div className="intro_subtitle ftLg boldTxt whiteTxt textLeft mt2">
+          앱을 통해 쉽고 간편하게
+          <br />
+          집안일을 분담해보세요.
+        </div>
+      </div>
+      <video muted autoPlay loop className="intro_video">
+        <source src="/video/intro.mp4" type="video/mp4" />
+      </video>
+
       <div className="loginButtons">
         <BottomButton
           text="카카오로 로그인"
@@ -123,6 +157,7 @@ const Intro = () => {
           imgSrc="/img/kakao_logo.png"
           onClick={kakao_login}
           buttonActive={isKakaoButtonActive}
+          borderRadius="4px"
         />
         <BottomButton
           text="네이버로 로그인"
@@ -131,6 +166,7 @@ const Intro = () => {
           imgSrc="/img/naver_logo.png"
           onClick={naver_login}
           buttonActive={isNaverButtonActive}
+          borderRadius="4px"
         />
       </div>
     </div>

@@ -1,11 +1,33 @@
 .Intro {
   overflow: hidden;
-  background-image: url(https://github.com/yohan11/N-bbang-housework/assets/40304565/3ff09106-76fa-4670-b475-29550a9519f3);
+  /* background-image: url(https://github.com/yohan11/N-bbang-housework/assets/40304565/3ff09106-76fa-4670-b475-29550a9519f3);*/
   background-repeat: no-repeat;
   background-size: 100% auto;
   height: 100vh;
+  backdrop-filter: grayscale(100%);
+
+  position: relative;
 
   font-family: Pretendard;
+}
+
+.intro_title {
+  position: absolute;
+
+  z-index: 1;
+
+  margin-top: 30%;
+  margin-left: 10%;
+}
+
+.intro_subtitle {
+  line-height: 35px;
+}
+
+.intro_video {
+  filter: brightness(0.5);
+  position: absolute;
+  right: -486px;
 }
 
 .loginButtons {
