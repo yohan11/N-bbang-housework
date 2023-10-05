@@ -1,0 +1,13 @@
+.NoticeBox {
+  display: flex;
+  align-items: center;
+
+  background: #70797e;
+  border-radius: 10px;
+
+  padding: 20px 30px;
+}
+
+.notice_subtxt {
+  margin-top: 5px;
+}

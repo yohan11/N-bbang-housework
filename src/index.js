@@ -7,6 +7,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import SignUp from "./pages/SignUp";
 import Home from "./pages/Home";
 import AddWork from "./pages/AddWork";
+import WorkList from "./pages/WorkList";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -17,6 +18,7 @@ root.render(
       <Route path="signup" element={<SignUp />}></Route>
       <Route path="home" element={<Home />}></Route>
       <Route path="add-work" element={<AddWork />}></Route>
+      <Route path="work-list" element={<WorkList />}></Route>
     </Routes>
   </BrowserRouter>,
 );
