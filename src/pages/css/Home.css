@@ -1,7 +1,8 @@
 .Home {
   padding: 30px;
+  margin-bottom: 20%;
 
-  overflow: scroll;
+  overflow: hidden;
 }
 
 .group_boxes {

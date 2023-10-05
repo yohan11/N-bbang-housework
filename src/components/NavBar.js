@@ -5,30 +5,55 @@ import { Link } from "react-router-dom";
 const NavBar = () => {
   var params = window.location.href;
 
+  const icon_backgroundColor_selected = {
+    fontSize: "32px",
+    color: "black",
+  };
+  const icon_backgroundColor_unselected = {
+    fontSize: "32px",
+    color: "#D5D5E1",
+  };
+
   return (
     <div className="NavBar">
       {params.includes("home") && <CircleButton />}
       <div className="menus">
         <Link to="/home">
-          <img
-            src={
+          <ion-icon
+            name="home"
+            style={
               params.includes("home")
-                ? "/img/home-icon_selected.png"
-                : "/img/home_icon.png"
+                ? icon_backgroundColor_selected
+                : icon_backgroundColor_unselected
             }
-          />
+          ></ion-icon>
         </Link>
         <Link to="/add-work">
-          <img
-            src={
+          <ion-icon
+            name="checkmark-circle"
+            style={
               params.includes("add-work")
-                ? "/img/check-icon_selected.png"
-                : "/img/check_icon.png"
+                ? icon_backgroundColor_selected
+                : icon_backgroundColor_unselected
             }
-          />
+          ></ion-icon>
         </Link>
-        <img src="/img/present_icon.png" />
-        <img src="/img/user_icon.png" />
+        <ion-icon
+          name="gift"
+          style={
+            params.includes("gift")
+              ? icon_backgroundColor_selected
+              : icon_backgroundColor_unselected
+          }
+        ></ion-icon>
+        <ion-icon
+          name="person-circle"
+          style={
+            params.includes("user")
+              ? icon_backgroundColor_selected
+              : icon_backgroundColor_unselected
+          }
+        ></ion-icon>
       </div>
     </div>
   );
