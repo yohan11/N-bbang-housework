@@ -4,8 +4,13 @@ const CategoryButton = (props) => {
   const selectedButtonColor = {
     backgroundColor: "#0FBE62",
     color: "white",
+    borderRadius: props.borderRadius,
+    width: props.width ? props.width : "auto",
   };
-  const unselectedButtonColor = {};
+  const unselectedButtonColor = {
+    borderRadius: props.borderRadius,
+    width: props.width ? props.width : "auto",
+  };
 
   return (
     <button

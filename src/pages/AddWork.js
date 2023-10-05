@@ -7,8 +7,10 @@ import BottomButton from "../components/Buttons/BottomButton";
 
 const AddWork = () => {
   const categoryList = ["집안일", "집 밖의 일", "돌봄", "기타", "기타2"];
+  const userList = ["구지원", "홍찬희", "김준영", "이주성"];
 
   const [selectedCategory, setSelectedCategory] = useState("");
+  const [selectedUser, setSelectedUser] = useState("");
 
   const date = new Date();
   const dayName = ["일", "월", "화", "수", "목", "금", "토"];
@@ -18,6 +20,9 @@ const AddWork = () => {
 
   const handleCategoryClick = (category) => {
     setSelectedCategory(category);
+  };
+  const handleUserClick = (user) => {
+    setSelectedUser(user);
   };
 
   return (
@@ -37,6 +42,21 @@ const AddWork = () => {
                 categoryName={item}
                 isSelected={selectedCategory === item}
                 onClick={() => handleCategoryClick(item)}
+                borderRadius="13px"
+              />
+            ))}
+          </div>
+        </div>
+        <div>
+          <div className="boldTxt ftM mt4">담당자</div>
+          <div className="category_boxes mt2">
+            {userList.map((item, idx) => (
+              <CategoryButton
+                key={idx}
+                categoryName={item}
+                isSelected={selectedUser === item}
+                onClick={() => handleUserClick(item)}
+                borderRadius="30px"
               />
             ))}
           </div>

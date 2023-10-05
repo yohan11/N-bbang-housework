@@ -49,6 +49,10 @@ body {
   overflow: scroll;
 }
 
+.category_boxes > button {
+  margin-right: 10px;
+}
+
 .work_description {
   height: 150px;
 }
