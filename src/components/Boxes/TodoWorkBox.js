@@ -97,8 +97,11 @@ const TodoWorkBox = (props) => {
               setWorkStatus("proceeding");
               setActiveMainModal(false);
             }}
+            activeCamera={true}
             width="40%"
           ></CategoryButton>
+
+          <br />
         </div>
       </Modal>
       <Modal
