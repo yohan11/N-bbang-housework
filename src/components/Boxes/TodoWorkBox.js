@@ -59,7 +59,7 @@ const TodoWorkBox = (props) => {
           },
           content: {
             position: "absolute",
-            top: "370px",
+            top: "30%",
             left: 0,
             right: 0,
             bottom: 0,
@@ -73,35 +73,39 @@ const TodoWorkBox = (props) => {
           },
         }}
       >
-        <img src="/img/mission_photo.png" className="modal_img" />
-        <div className="ftM boldTxt textCenter mt4">
-          {props.todoWorkName} 미션 클리어!
-        </div>
-        <div className="ftXSm thinTxt textCenter mt2">
-          사진을 찍어 단국대팟 하우스 멤버들에게
-          <br /> 미션 클리어 인증을 해보세요!
-        </div>
-        <div className="modal_buttons mt4">
-          <CategoryButton
-            borderRadius="10px"
-            categoryName="취소"
-            isSelected={false}
-            onClick={() => setActiveMainModal(false)}
-            width="40%"
-          ></CategoryButton>
-          <CategoryButton
-            borderRadius="10px"
-            categoryName="사진 인증하기"
-            isSelected={false}
-            onClick={() => {
-              setWorkStatus("proceeding");
-              setActiveMainModal(false);
-            }}
-            activeCamera={true}
-            width="40%"
-          ></CategoryButton>
+        <div className="modal_contents">
+          <img src="/img/mission_photo.png" className="modal_img" />
+          <div className="modal_texts">
+            <div className="ftM boldTxt textCenter mt4">
+              {props.todoWorkName} 미션 클리어!
+            </div>
+            <div className="ftXSm thinTxt textCenter mt2">
+              사진을 찍어 단국대팟 하우스 멤버들에게
+              <br /> 미션 클리어 인증을 해보세요!
+            </div>
+            <div className="modal_buttons mt4">
+              <CategoryButton
+                borderRadius="10px"
+                categoryName="취소"
+                isSelected={false}
+                onClick={() => setActiveMainModal(false)}
+                width="40%"
+              ></CategoryButton>
+              <CategoryButton
+                borderRadius="10px"
+                categoryName="사진 인증하기"
+                isSelected={false}
+                onClick={() => {
+                  setWorkStatus("proceeding");
+                  setActiveMainModal(false);
+                }}
+                activeCamera={true}
+                width="40%"
+              ></CategoryButton>
 
-          <br />
+              <br />
+            </div>
+          </div>
         </div>
       </Modal>
       <Modal
@@ -120,7 +124,7 @@ const TodoWorkBox = (props) => {
           },
           content: {
             position: "absolute",
-            top: "320px",
+            top: "25%",
             left: 0,
             right: 0,
             bottom: 0,
@@ -134,24 +138,26 @@ const TodoWorkBox = (props) => {
           },
         }}
       >
-        <img src="/img/mission_check.gif" className="modal_sub_img" />
-        <div className="ftM boldTxt textCenter mt3">
-          멤버들의 인증을 기다려주세요!
-        </div>
-        <div className="ftXSm thinTxt textCenter mt2">
-          단국대팟 하우스 멤버들 중 한명 이상이 사진을
-          <br /> 보고 수행 완료 버튼을 눌러야 미션이 완료돼요.
-        </div>
-        <div className="modal_buttons mt4">
-          <CategoryButton
-            borderRadius="10px"
-            categoryName="이전 페이지로 돌아가기"
-            isSelected={false}
-            onClick={() => {
-              setActiveSubModal(false);
-            }}
-            width="80%"
-          ></CategoryButton>
+        <div className="modal_contents">
+          <img src="/img/mission_check.gif" className="modal_sub_img" />
+          <div className="ftM boldTxt textCenter mt3">
+            멤버들의 인증을 기다려주세요!
+          </div>
+          <div className="ftXSm thinTxt textCenter mt2">
+            단국대팟 하우스 멤버들 중 한명 이상이 사진을
+            <br /> 보고 수행 완료 버튼을 눌러야 미션이 완료돼요.
+          </div>
+          <div className="modal_buttons mt4">
+            <CategoryButton
+              borderRadius="10px"
+              categoryName="이전 페이지로 돌아가기"
+              isSelected={false}
+              onClick={() => {
+                setActiveSubModal(false);
+              }}
+              width="80%"
+            ></CategoryButton>
+          </div>
         </div>
       </Modal>
     </>

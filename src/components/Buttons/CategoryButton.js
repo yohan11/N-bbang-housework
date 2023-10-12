@@ -19,6 +19,7 @@ const CategoryButton = (props) => {
   const buttonCameraActive = () => {
     if (inputRef.current) {
       inputRef.current.click(); // 버튼 클릭 시 input 요소를 클릭합니다.
+      props.onClick();
     }
   };
 

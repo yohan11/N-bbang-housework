@@ -3,7 +3,7 @@
   flex-direction: column;
 
   position: fixed;
-  bottom: 0;
+  bottom: -2px;
   left: 0;
   padding: 18px;
 
