@@ -2,7 +2,7 @@ import "./css/MainHeader.css";
 import { Link } from "react-router-dom";
 
 const MainHeader = (props) => {
-  const iconSize = {
+  const icon_style = {
     fontSize: "20px",
     color: "rgb(112, 121, 126)",
     marginTop: "4px",
@@ -27,7 +27,7 @@ const MainHeader = (props) => {
       <ion-icon
         name="notifications"
         className="right_icon"
-        style={iconSize}
+        style={icon_style}
       ></ion-icon>
     </div>
   );

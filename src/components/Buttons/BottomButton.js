@@ -1,7 +1,7 @@
 import "./css/BottomButton.css";
 
 const BottomButton = (props) => {
-  const bottomButtonStyle = {
+  const bottom_button_style = {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
@@ -25,7 +25,7 @@ const BottomButton = (props) => {
     <div>
       <button
         className="btn"
-        style={bottomButtonStyle}
+        style={bottom_button_style}
         onClick={props.onClick}
         disabled={!props.buttonActive}
       >

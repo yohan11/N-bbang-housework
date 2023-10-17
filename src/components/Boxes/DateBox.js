@@ -1,12 +1,12 @@
 import "./css/DateBox.css";
 
 const DateBox = (props) => {
-  const selectedStyle = {
+  const selected_style = {
     backgroundColor: "#0fbe62",
     color: "white",
     padding: "3px",
   };
-  const unSelectedStyle = {
+  const unSelected_style = {
     paddingTop: "3px",
   };
   return (
@@ -16,7 +16,7 @@ const DateBox = (props) => {
       </span>
       <span
         className="dateNum boldTxt ftSm textCenter"
-        style={props.selected ? selectedStyle : unSelectedStyle}
+        style={props.selected ? selected_style : unSelected_style}
       >
         {props.dayNum}
       </span>
