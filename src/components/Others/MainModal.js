@@ -1,5 +1,7 @@
 import Modal from "react-modal";
 import CategoryButton from "../Buttons/CategoryButton";
+import React from "react";
+import "./css/MainModal.css";
 
 const MainModal = (props) => {
   return (
@@ -34,7 +36,10 @@ const MainModal = (props) => {
       }}
     >
       <div className="modal_contents">
-        <img src="/img/mission_photo.png" className="modal_img" />
+        <img
+          src={props.modalImage}
+          className={props.isPreviewImg ? "preview_img" : "modal_img"}
+        />
         <div className="modal_texts">
           <div className="ftM boldTxt textCenter mt4">{props.titleText}</div>
           <div className="ftXSm thinTxt textCenter mt2">
@@ -54,8 +59,9 @@ const MainModal = (props) => {
                   borderRadius="10px"
                   categoryName={props.secondBtnText}
                   isSelected={false}
-                  onClick={props.secondBtnOnClick}
-                  activeCamera={props.activeCamera}
+                  onClick={() => {
+                    props.secondBtnOnClick();
+                  }}
                   width="40%"
                 ></CategoryButton>
               </>
@@ -65,7 +71,6 @@ const MainModal = (props) => {
                 categoryName={props.BtnText}
                 isSelected={false}
                 onClick={props.BtnOnClick}
-                activeCamera={props.activeCamera}
                 width="80%"
               ></CategoryButton>
             )}

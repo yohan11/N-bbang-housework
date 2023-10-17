@@ -1,6 +1,6 @@
 import "./css/TodoWorkBox.css";
 import Avatar from "../Others/Avatar";
-import { useState } from "react";
+import React, { useRef, useState } from "react";
 import MainModal from "../Others/MainModal";
 
 const TodoWorkBox = (props) => {
@@ -13,17 +13,45 @@ const TodoWorkBox = (props) => {
     fontSize: "48px",
   };
 
-  const [activeMainModal, setActiveMainModal] = useState(false);
-  const [activeSubModal, setActiveSubModal] = useState(false);
+  const [activeStartConfirmModal, setActiveStartConfirmModal] = useState(false);
+  const [activeWaitingConfirmModal, setActiveWaitingConfirmModal] =
+    useState(false);
+  const [activeCheckPhotoModal, setActiveCheckPhotoModal] = useState(false);
   const [workStatus, setWorkStatus] = useState("pre");
+
+  const inputRef = useRef(null);
+
+  // 사진 인증 버튼 클릭 시 input이 동작하도록 합니다.
+  const buttonCameraActive = () => {
+    if (inputRef.current) {
+      inputRef.current.click();
+      console.log("HI");
+    }
+  };
+
+  const [imgFile, setImgFile] = useState(null);
+
+  // 미션 인증 사진을 업로드 할 시 미리보기 기능을 지원합니다.
+  const handleInputChange = (event) => {
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0];
+      const reader = new FileReader();
+
+      reader.onload = (e) => {
+        setImgFile(e.target.result);
+      };
+      reader.readAsDataURL(file);
+    }
+    setActiveCheckPhotoModal(true);
+  };
   return (
     <>
       <div
         className="TodoWorkBox"
         onClick={() => {
           workStatus === "pre"
-            ? setActiveMainModal(true)
-            : setActiveSubModal(true);
+            ? setActiveStartConfirmModal(true)
+            : setActiveWaitingConfirmModal(true);
         }}
       >
         <ion-icon
@@ -44,9 +72,11 @@ const TodoWorkBox = (props) => {
       </div>
 
       <MainModal
-        activeModal={activeMainModal}
-        onRequestCloseFunc={() => setActiveMainModal(false)}
+        activeModal={activeStartConfirmModal}
+        onRequestCloseFunc={() => setActiveStartConfirmModal(false)}
         modalTop="30%"
+        isPreviewImg={false}
+        modalImage="/img/mission_photo.png"
         titleText={props.todoWorkName + " 미션 클리어!"}
         contentText={
           <div>
@@ -57,18 +87,31 @@ const TodoWorkBox = (props) => {
         }
         twoBtn={true}
         firstBtnText="취소"
-        firstBtnOnClick={() => setActiveMainModal(false)}
+        firstBtnOnClick={() => setActiveStartConfirmModal(false)}
         secondBtnText="사진 인증하기"
         secondBtnOnClick={() => {
-          setWorkStatus("proceeding");
-          setActiveMainModal(false);
+          buttonCameraActive();
+          if (imgFile) {
+            setActiveCheckPhotoModal(true);
+          }
         }}
-        activeCamera={true}
+      />
+      <input
+        ref={inputRef}
+        className="CategoryBox regularTxt ftSm hidden"
+        type="file"
+        id="camera"
+        name="camera"
+        capture="camera"
+        accept="image/*"
+        onChange={handleInputChange}
       />
       <MainModal
-        activeModal={activeSubModal}
-        onRequestCloseFunc={() => setActiveSubModal(false)}
+        activeModal={activeWaitingConfirmModal}
+        onRequestCloseFunc={() => setActiveWaitingConfirmModal(false)}
         modalTop="25%"
+        isPreviewImg={false}
+        modalImage="/img/mission_check.gif"
         titleText="멤버들의 인증을 기다려주세요!"
         contentText={
           <div>
@@ -79,8 +122,25 @@ const TodoWorkBox = (props) => {
         }
         twoBtn={false}
         BtnText="이전 페이지로 돌아가기"
-        BtnOnClick={() => setActiveSubModal(false)}
-        activeCamera={false}
+        BtnOnClick={() => setActiveWaitingConfirmModal(false)}
+      />
+      <MainModal
+        activeModal={activeCheckPhotoModal}
+        onRequestCloseFunc={() => setActiveCheckPhotoModal(false)}
+        modalTop="30%"
+        modalImage={imgFile}
+        isPreviewImg={true}
+        titleText="인증 사진을 확인해주세요"
+        contentText="정말 이 사진으로 미션 인증을 진행할까요?"
+        twoBtn={true}
+        firstBtnText="다른 사진 찍기"
+        firstBtnOnClick={() => buttonCameraActive()}
+        secondBtnText="확인"
+        secondBtnOnClick={() => {
+          setWorkStatus("proceeding");
+          setActiveStartConfirmModal(false);
+          setActiveCheckPhotoModal(false);
+        }}
       />
     </>
   );

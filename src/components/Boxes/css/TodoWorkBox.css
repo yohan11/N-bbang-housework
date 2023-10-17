@@ -30,22 +30,3 @@
   position: absolute;
   left: 80%;
 }
-
-.modal_contents {
-  position: absolute;
-  bottom: 10%;
-}
-
-.modal_img,
-.modal_sub_img {
-  background-color: #0fbe62;
-  width: 100%;
-  padding-top: 50%;
-}
-
-.modal_buttons {
-  display: flex;
-
-  text-align: center;
-  justify-content: space-evenly;
-}
