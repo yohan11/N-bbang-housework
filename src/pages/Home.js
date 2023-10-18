@@ -5,6 +5,7 @@ import TodoWorkBox from "../components/Boxes/TodoWorkBox";
 import NavBar from "../components/NavBar";
 import { Link } from "react-router-dom";
 import Calander from "../components/Others/Calander";
+import React from "react";
 
 const Home = () => {
   const houseNameList = ["단국대팟", "본가"];
@@ -45,6 +46,7 @@ const Home = () => {
           </div>
         </div>
       </div>
+
       <div className="nav">
         <NavBar />
       </div>

@@ -16,7 +16,7 @@ const NavBar = () => {
 
   return (
     <div className="NavBar">
-      {params.includes("home") && <CircleButton />}
+      {!params.includes("add-work") && <CircleButton />}
       <div className="menus">
         <Link to="/home">
           <ion-icon

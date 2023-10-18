@@ -5,8 +5,16 @@ const NoticeBox = (props) => {
     fontSize: "36px",
     color: "white",
   };
+  const notice_hidden = {
+    display: "none",
+  };
+  const notice_show = {};
   return (
-    <div className="NoticeBox" onClick={props.onClick}>
+    <div
+      className="NoticeBox"
+      onClick={props.onClick}
+      style={props.hidden ? notice_hidden : notice_show}
+    >
       <ion-icon name="notifications" style={notice_icon_style}></ion-icon>
       <div className="ml2">
         <div className="ftSm regularTxt whiteTxt">

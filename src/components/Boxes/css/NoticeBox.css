@@ -2,10 +2,15 @@
   display: flex;
   align-items: center;
 
-  background: #70797e;
+  background: rgb(98 107 112 / 90%);
   border-radius: 10px;
 
   padding: 20px 30px;
+
+  position: fixed;
+  bottom: 15vh;
+
+  width: 85%;
 }
 
 .notice_subtxt {
