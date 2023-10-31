@@ -2,7 +2,7 @@ import "./css/Intro.css";
 import BottomButton from "../components/Buttons/BottomButton";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-
+import { api, generateTokenApiUrl } from "../config";
 const Intro = () => {
   const [kakaoLoginUrl, setKakaoLoginUrl] = useState();
   const [naverLoginUrl, setNaverLoginUrl] = useState();
@@ -22,7 +22,7 @@ const Intro = () => {
 
   // 페이지 로드 시 카카오, 네이버 로그인 URL을 받아옵니다.
   useEffect(() => {
-    fetch("https://jubujob.com/auth/KAKAO/loginPage")
+    fetch(api.KAKAO_LOGIN_API)
       .then((res) => {
         if (!res.ok) {
           throw new Error("API 요청 실패");
@@ -39,7 +39,7 @@ const Intro = () => {
   }, []);
 
   useEffect(() => {
-    fetch("https://jubujob.com/auth/NAVER/loginPage")
+    fetch(api.NAVER_LOGIN_API)
       .then((res) => {
         if (!res.ok) {
           throw new Error("API 요청 실패");
@@ -81,9 +81,7 @@ const Intro = () => {
   // code와 state값이 올바르게 저장되었을 경우 api를 호출하여 토큰을 받아와 세션 스토리지에 저장합니다.
   useEffect(() => {
     if (code && state) {
-      fetch(
-        `https://jubujob.com/auth/${loginPlatform}/login?code=${code}&state=${state}`,
-      )
+      fetch(generateTokenApiUrl(loginPlatform, code, state))
         .then((res) => {
           if (!res.ok) {
             throw new Error("API 요청 실패");
@@ -105,7 +103,7 @@ const Intro = () => {
   // 세션 스토리지에 저장되어있는 토큰을 가져와서 api를 호출하여 유저 정보를 받아옵니다.
   useEffect(() => {
     if (accessToken && refreshToken) {
-      fetch("https://jubujob.com/auth/info", {
+      fetch(api.USER_INFO_API, {
         method: "GET",
         headers: {
           "content-type": "application/json",
