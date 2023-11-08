@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./css/AddWork.css";
 import MainHeader from "../components/Headers/MainHeader";
 import CategoryButton from "../components/Buttons/CategoryButton";
 import NavBar from "../components/NavBar";
 import BottomButton from "../components/Buttons/BottomButton";
+import { api } from "../config";
 
 const AddWork = () => {
   const categoryList = ["집안일", "집 밖의 일", "돌봄", "기타", "기타2"];
@@ -25,6 +26,41 @@ const AddWork = () => {
     setSelectedUser(user);
   };
 
+  useEffect(() => {
+    fetch(api.HOUSEWORK_CATEGORY_GET_API)
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error("API 요청 실패");
+        }
+        return res.json();
+      })
+      .then((json) => {
+        console.log(json.resObj);
+      })
+      .catch((error) => {
+        console.error("API 요청 중 오류 발생:", error);
+      });
+  }, []);
+
+  const [groupId, setGroupId] = useState("1");
+  const accessToken = sessionStorage.getItem("accessToken");
+  const refreshToken = sessionStorage.getItem("refreshToken");
+
+  useEffect(() => {
+    fetch(api.HOUSEWORK_MANAGER_GET_API + groupId, {
+      method: "GET",
+      headers: {
+        "content-type": "application/json",
+        Authorization: `Bearer ${accessToken} ${refreshToken}`,
+      },
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((json) => {
+        console.log(json);
+      });
+  }, []);
   return (
     <div className="AddWork">
       <MainHeader pageName="할 일 추가" />
