@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import "./css/AddWork.css";
 import MainHeader from "../components/Headers/MainHeader";
 import CategoryButton from "../components/Buttons/CategoryButton";
-import NavBar from "../components/NavBar";
 import BottomButton from "../components/Buttons/BottomButton";
 import { api } from "../config";
 
@@ -61,6 +60,38 @@ const AddWork = () => {
         console.log(json);
       });
   }, []);
+
+  const addWork = () => {
+    fetch(api.ADD_WORK_POST_API + groupId, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        Authorization: `Bearer ${accessToken} ${refreshToken}`,
+      },
+      body: {
+        groupMemberIdList: [0],
+        houseworkCategoryId: 0,
+        title: "string",
+        detail: "string",
+        type: "HOUSEWORK_PERIOD_DAY",
+        dayDate: "2023-11-08",
+        weekDate: "7",
+        monthDate: "0000000000000000000000001",
+        endTime: {
+          hour: 0,
+          minute: 0,
+          second: 0,
+          nano: 0,
+        },
+      },
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((json) => {
+        console.log(json);
+      });
+  };
   return (
     <div className="AddWork">
       <MainHeader pageName="할 일 추가" />
@@ -140,9 +171,9 @@ const AddWork = () => {
           textColor="white"
           borderRadius="15px"
           fontWeight="700"
+          onClick={addWork}
         />
       </div>
-      <NavBar />
     </div>
   );
 };
