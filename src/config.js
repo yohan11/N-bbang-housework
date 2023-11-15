@@ -19,6 +19,7 @@ const api = {
   TODO_GET_API: createUrl("api/housework/todo/"),
   HOUSEWORK_CATEGORY_GET_API: createUrl("api/housework/category/"),
   HOUSEWORK_MANAGER_GET_API: createUrl("api/group/member/"),
+  ADD_WORK_POST_API: createUrl("api/housework/"),
 };
 
 const generateTokenApiUrl = (platform, code, state) => {
