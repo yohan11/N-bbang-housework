@@ -8,6 +8,7 @@ import SignUp from "./pages/SignUp";
 import Home from "./pages/Home";
 import AddWork from "./pages/AddWork";
 import WorkList from "./pages/WorkList";
+import GiftShop from "./pages/GiftShop";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -19,6 +20,7 @@ root.render(
       <Route path="home" element={<Home />}></Route>
       <Route path="add-work" element={<AddWork />}></Route>
       <Route path="work-list" element={<WorkList />}></Route>
+      <Route path="gift-shop" element={<GiftShop />}></Route>
     </Routes>
   </BrowserRouter>,
 );
