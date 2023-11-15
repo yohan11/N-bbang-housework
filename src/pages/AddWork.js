@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import "./css/AddWork.css";
 import MainHeader from "../components/Headers/MainHeader";
 import CategoryButton from "../components/Buttons/CategoryButton";
-import NavBar from "../components/NavBar";
 import BottomButton from "../components/Buttons/BottomButton";
 import { api } from "../config";
 
@@ -175,7 +174,6 @@ const AddWork = () => {
           onClick={addWork}
         />
       </div>
-      <NavBar />
     </div>
   );
 };

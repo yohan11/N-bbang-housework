@@ -28,11 +28,11 @@ const NavBar = () => {
             }
           ></ion-icon>
         </Link>
-        <Link to="/add-work">
+        <Link to="/work-list">
           <ion-icon
             name="checkmark-circle"
             style={
-              params.includes("add-work")
+              params.includes("work-list")
                 ? icon_backgroundColor_selected
                 : icon_backgroundColor_unselected
             }
