@@ -21,3 +21,16 @@
   text-align: center;
   justify-content: space-evenly;
 }
+
+.inputGroupCode {
+  padding: 4% 2%;
+  width: 70%;
+
+  text-align: center;
+
+  border: none;
+  color: black;
+  background-color: #dadada;
+  font-size: 1.5rem;
+  border-radius: 10px;
+}

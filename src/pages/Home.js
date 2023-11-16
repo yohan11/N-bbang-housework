@@ -5,11 +5,13 @@ import TodoWorkBox from "../components/Boxes/TodoWorkBox";
 import NavBar from "../components/NavBar";
 import { Link } from "react-router-dom";
 import Calander from "../components/Others/Calander";
-import React from "react";
+import React, { useState } from "react";
+import MainModal from "../components/Others/MainModal";
 
 const Home = () => {
   const houseNameList = ["단국대팟", "본가"];
   const todoWorkList = ["설거지", "분리수거", "빨래", "빨래 건조"];
+  const [activeGroupAddModal, setActiveGroupAddModal] = useState(false);
 
   return (
     <div className="Home">
@@ -29,6 +31,28 @@ const Home = () => {
               "https://img.freepik.com/free-vector/hand-painted-watercolor-pastel-sky-background_23-2148902771.jpg"
             }
             progressStatus={70}
+          />
+          <div
+            className="groupAddBox"
+            onClick={() => setActiveGroupAddModal(true)}
+          >
+            +
+          </div>
+          <MainModal
+            activeModal={activeGroupAddModal}
+            onRequestCloseFunc={() => setActiveGroupAddModal(false)}
+            modalTop="65%"
+            isPreviewImg={false}
+            titleText={`그룹의 코드를 입력해주세요`}
+            contentText={<input type="text" className="inputGroupCode"></input>}
+            twoBtn={true}
+            firstBtnText="취소"
+            firstBtnOnClick={() => setActiveGroupAddModal(false)}
+            secondBtnText="완료"
+            secondBtnOnClick={() => {
+              console.log("api 호출");
+              setActiveGroupAddModal(false);
+            }}
           />
         </div>
         <Calander />

@@ -36,10 +36,13 @@ const MainModal = (props) => {
       }}
     >
       <div className="modal_contents">
-        <img
-          src={props.modalImage}
-          className={props.isPreviewImg ? "preview_img" : "modal_img"}
-        />
+        {props.modalImage && (
+          <img
+            src={props.modalImage}
+            className={props.isPreviewImg ? "preview_img" : "modal_img"}
+          />
+        )}
+
         <div className="modal_texts">
           <div className="ftM boldTxt textCenter mt4">{props.titleText}</div>
           <div className="ftXSm thinTxt textCenter mt2">
