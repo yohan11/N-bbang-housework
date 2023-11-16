@@ -7,11 +7,36 @@ import { Link } from "react-router-dom";
 import Calander from "../components/Others/Calander";
 import React, { useState } from "react";
 import MainModal from "../components/Others/MainModal";
+import { api } from "../config";
 
 const Home = () => {
   const houseNameList = ["단국대팟", "본가"];
   const todoWorkList = ["설거지", "분리수거", "빨래", "빨래 건조"];
   const [activeGroupAddModal, setActiveGroupAddModal] = useState(false);
+
+  const accessToken = sessionStorage.getItem("accessToken");
+  const refreshToken = sessionStorage.getItem("refreshToken");
+
+  const [joinCode, setJoinCode] = useState("");
+  const handleInputChange = (event) => {
+    setJoinCode(event.target.value);
+  };
+
+  const joinGroup = (joinCode) => {
+    fetch(`${api.GROUP_JOIN_API}?joinCode=${joinCode}`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        Authorization: `Bearer ${accessToken} ${refreshToken}`,
+      },
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((json) => {
+        console.log(json);
+      });
+  };
 
   return (
     <div className="Home">
@@ -44,13 +69,19 @@ const Home = () => {
             modalTop="65%"
             isPreviewImg={false}
             titleText={`그룹의 코드를 입력해주세요`}
-            contentText={<input type="text" className="inputGroupCode"></input>}
+            contentText={
+              <input
+                type="text"
+                className="inputGroupCode"
+                onChange={handleInputChange}
+              ></input>
+            }
             twoBtn={true}
             firstBtnText="취소"
             firstBtnOnClick={() => setActiveGroupAddModal(false)}
             secondBtnText="완료"
             secondBtnOnClick={() => {
-              console.log("api 호출");
+              joinGroup(joinCode);
               setActiveGroupAddModal(false);
             }}
           />
