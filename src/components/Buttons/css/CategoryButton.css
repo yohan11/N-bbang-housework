@@ -1,3 +1,7 @@
+body {
+  text-decoration: none;
+}
+
 .CategoryBox {
   background-color: #e5f8dc;
   padding: 20px 30px;
@@ -9,6 +13,8 @@
   white-space: nowrap;
   border: none;
   cursor: pointer;
+
+  color: black;
 }
 
 .hidden {
