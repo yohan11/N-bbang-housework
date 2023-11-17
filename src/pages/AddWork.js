@@ -6,7 +6,7 @@ import BottomButton from "../components/Buttons/BottomButton";
 import { api } from "../config";
 
 const AddWork = () => {
-  const categoryList = ["집안일", "집 밖의 일", "돌봄", "기타", "기타2"];
+  const [categoryList, setCategoryList] = useState([]);
   const userList = ["구지원", "홍찬희", "김준영", "이주성"];
 
   const [selectedCategory, setSelectedCategory] = useState("");
@@ -17,6 +17,10 @@ const AddWork = () => {
   const todayStr = `${date.getMonth() + 1}월 ${date.getDate()}일 ${
     dayName[date.getDay()]
   }요일`;
+
+  const [groupId, setGroupId] = useState("1");
+  const accessToken = sessionStorage.getItem("accessToken");
+  const refreshToken = sessionStorage.getItem("refreshToken");
 
   const handleCategoryClick = (category) => {
     setSelectedCategory(category);
@@ -34,16 +38,14 @@ const AddWork = () => {
         return res.json();
       })
       .then((json) => {
-        console.log(json.resObj);
+        let categorys = [];
+        json.resObj.map((item) => categorys.push(item["name"]));
+        setCategoryList(categorys);
       })
       .catch((error) => {
         console.error("API 요청 중 오류 발생:", error);
       });
   }, []);
-
-  const [groupId, setGroupId] = useState("1");
-  const accessToken = sessionStorage.getItem("accessToken");
-  const refreshToken = sessionStorage.getItem("refreshToken");
 
   useEffect(() => {
     fetch(api.HOUSEWORK_MANAGER_GET_API + groupId, {
@@ -92,6 +94,7 @@ const AddWork = () => {
         console.log(json);
       });
   };
+
   return (
     <div className="AddWork">
       <MainHeader pageName="할 일 추가" />
