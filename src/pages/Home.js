@@ -67,7 +67,15 @@ const Home = () => {
         return res.json();
       })
       .then((json) => {
-        console.log(json);
+        if (json["resObj"] === null) {
+          alert("그룹 코드가 올바르지 않습니다.");
+        } else {
+          alert(`${"그룹명"}에 오신것을 환영합니다!`);
+          setActiveGroupAddModal(false);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
       });
   };
 
@@ -115,7 +123,6 @@ const Home = () => {
             secondBtnText="완료"
             secondBtnOnClick={() => {
               joinGroup(joinCode);
-              setActiveGroupAddModal(false);
             }}
           />
         </div>
