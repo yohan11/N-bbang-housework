@@ -5,7 +5,7 @@ import TodoWorkBox from "../components/Boxes/TodoWorkBox";
 import NavBar from "../components/NavBar";
 import { Link } from "react-router-dom";
 import Calander from "../components/Others/Calander";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import MainModal from "../components/Others/MainModal";
 import { api } from "../config";
 
@@ -18,9 +18,42 @@ const Home = () => {
   const refreshToken = sessionStorage.getItem("refreshToken");
 
   const [joinCode, setJoinCode] = useState("");
+  const groupId = "1";
   const handleInputChange = (event) => {
     setJoinCode(event.target.value);
   };
+
+  useEffect(() => {
+    fetch(api.GROUP_INFO_GET_API, {
+      method: "GET",
+      headers: {
+        "content-type": "application/json",
+        Authorization: `Bearer ${accessToken} ${refreshToken}`,
+      },
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((json) => {
+        console.log(json);
+      });
+  }, []);
+
+  useEffect(() => {
+    fetch(`${api.TODO_GET_API + "1"}?date=${"2023-11-16"}`, {
+      method: "GET",
+      headers: {
+        "content-type": "application/json",
+        Authorization: `Bearer ${accessToken} ${refreshToken}`,
+      },
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((json) => {
+        console.log(json);
+      });
+  }, []);
 
   const joinGroup = (joinCode) => {
     fetch(`${api.GROUP_JOIN_API}?joinCode=${joinCode}`, {
