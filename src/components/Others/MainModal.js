@@ -61,7 +61,7 @@ const MainModal = (props) => {
                 <CategoryButton
                   borderRadius="10px"
                   categoryName={props.secondBtnText}
-                  isSelected={false}
+                  isSelected={true}
                   onClick={() => {
                     props.secondBtnOnClick();
                   }}
