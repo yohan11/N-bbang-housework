@@ -10,7 +10,7 @@ import MainModal from "../components/Others/MainModal";
 import { api } from "../config";
 
 const Home = () => {
-  const houseNameList = ["단국대팟", "본가"];
+  const [houseInfoList, setHouseInfoList] = useState([]);
   const todoWorkList = ["설거지", "분리수거", "빨래", "빨래 건조"];
   const [activeGroupAddModal, setActiveGroupAddModal] = useState(false);
 
@@ -36,9 +36,19 @@ const Home = () => {
       })
       .then((json) => {
         console.log(json);
+        var houseList = [];
+        json["resObj"].map((item) => {
+          houseList.push({
+            name: item["name"],
+            progressPercent: item["progressPercent"],
+            remainTodoListCnt: item["remainTodoListCnt"],
+            groupMembers: item["groupMembers"],
+          });
+        });
+        setHouseInfoList(houseList);
       });
   }, []);
-
+  console.log(houseInfoList);
   useEffect(() => {
     fetch(`${api.TODO_GET_API + "1"}?date=${"2023-11-16"}`, {
       method: "GET",
@@ -84,20 +94,18 @@ const Home = () => {
       <MainHeader pageName="Home" />
       <div className="MainContent mt3">
         <div className="group_boxes displayFlex">
-          <GroupThumbnailBox
-            groupName={"단국대팟"}
-            groupImage={
-              "https://github.com/yohan11/N-bbang-housework/assets/40304565/54999589-50e0-4fc5-8097-f109e171d024"
-            }
-            progressStatus={52}
-          />
-          <GroupThumbnailBox
-            groupName={"엄마아빠집"}
-            groupImage={
-              "https://img.freepik.com/free-vector/hand-painted-watercolor-pastel-sky-background_23-2148902771.jpg"
-            }
-            progressStatus={70}
-          />
+          {houseInfoList.map((item) => (
+            <GroupThumbnailBox
+              groupName={item["name"]}
+              groupImage={
+                "https://github.com/yohan11/N-bbang-housework/assets/40304565/54999589-50e0-4fc5-8097-f109e171d024"
+              }
+              progressStatus={item["progressPercent"]}
+              remainTodoListCnt={item["remainTodoListCnt"]}
+              groupMembers={item["groupMembers"]}
+            />
+          ))}
+
           <div
             className="groupAddBox"
             onClick={() => setActiveGroupAddModal(true)}
@@ -107,7 +115,7 @@ const Home = () => {
           <MainModal
             activeModal={activeGroupAddModal}
             onRequestCloseFunc={() => setActiveGroupAddModal(false)}
-            modalTop="65%"
+            modalTop="60%"
             isPreviewImg={false}
             titleText={`그룹의 코드를 입력해주세요`}
             contentText={

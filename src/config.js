@@ -21,6 +21,7 @@ const api = {
   HOUSEWORK_MANAGER_GET_API: createUrl("api/group/member/"),
   ADD_WORK_POST_API: createUrl("api/housework/"),
   GROUP_JOIN_API: createUrl("api/group/info/join"),
+  GROUP_MEMBER_API: createUrl("api/group/member"),
 };
 
 const generateTokenApiUrl = (platform, code, state) => {
