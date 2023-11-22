@@ -34,6 +34,7 @@
 .groupAddBox {
   width: 100%;
   padding: 0 40%;
+  margin-right: 5%;
 
   text-align: center;
   display: flex;
