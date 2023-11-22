@@ -11,7 +11,7 @@ import { api } from "../config";
 
 const Home = () => {
   const [houseInfoList, setHouseInfoList] = useState([]);
-  const todoWorkList = ["설거지", "분리수거", "빨래", "빨래 건조"];
+  const [todoWorkList, setTodoWorkList] = useState([]);
   const [activeGroupAddModal, setActiveGroupAddModal] = useState(false);
 
   const accessToken = sessionStorage.getItem("accessToken");
@@ -35,7 +35,6 @@ const Home = () => {
         return res.json();
       })
       .then((json) => {
-        console.log(json);
         var houseList = [];
         json["resObj"].map((item) => {
           houseList.push({
@@ -48,7 +47,7 @@ const Home = () => {
         setHouseInfoList(houseList);
       });
   }, []);
-  console.log(houseInfoList);
+
   useEffect(() => {
     fetch(`${api.TODO_GET_API + "1"}?date=${"2023-11-16"}`, {
       method: "GET",
@@ -61,7 +60,7 @@ const Home = () => {
         return res.json();
       })
       .then((json) => {
-        console.log(json);
+        setTodoWorkList(json["resObj"]["todoList"]);
       });
   }, []);
 
@@ -144,7 +143,7 @@ const Home = () => {
           </div>
           <div className="mt2">
             {todoWorkList.map((item, idx) => (
-              <TodoWorkBox todoWorkName={item} />
+              <TodoWorkBox todoWorkName={item["title"]} />
             ))}
           </div>
         </div>

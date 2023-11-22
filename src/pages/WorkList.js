@@ -4,21 +4,42 @@ import Calander from "../components/Others/Calander";
 import "./css/WorkList.css";
 import TodoWorkBox from "../components/Boxes/TodoWorkBox";
 import NoticeBox from "../components/Boxes/NoticeBox";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import MainModal from "../components/Others/MainModal";
+import { api } from "../config";
 
 const WorkList = () => {
-  const todoWorkList = ["설거지", "분리수거", "빨래", "빨래 건조"];
+  const [todoWorkList, setTodoWorkList] = useState([]);
 
   const [activeConfirmModal, setActiveConfirmModal] = useState(false);
   const [noticeHidden, setNoticehidden] = useState(false);
+
+  const accessToken = sessionStorage.getItem("accessToken");
+  const refreshToken = sessionStorage.getItem("refreshToken");
+
+  useEffect(() => {
+    fetch(`${api.TODO_GET_API + "1"}?date=${"2023-11-16"}`, {
+      method: "GET",
+      headers: {
+        "content-type": "application/json",
+        Authorization: `Bearer ${accessToken} ${refreshToken}`,
+      },
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((json) => {
+        setTodoWorkList(json["resObj"]["todoList"]);
+      });
+  }, []);
+
   return (
     <div className="WorkList">
       <MainHeader pageName="할 일 목록" />
       <Calander />
       <div className="mt2">
         {todoWorkList.map((item, idx) => (
-          <TodoWorkBox todoWorkName={item} />
+          <TodoWorkBox todoWorkName={item["title"]} />
         ))}
       </div>
       <NoticeBox
