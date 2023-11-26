@@ -7,10 +7,10 @@ import { api } from "../config";
 
 const AddWork = () => {
   const [categoryList, setCategoryList] = useState([]);
-  const userList = ["구지원", "홍찬희", "김준영", "이주성"];
+  const [userList, setUserList] = useState([]);
 
   const [selectedCategory, setSelectedCategory] = useState("");
-  const [selectedUser, setSelectedUser] = useState("");
+  const [selectedUsers, setSelectedUsers] = useState([]);
 
   const date = new Date();
   const dayName = ["일", "월", "화", "수", "목", "금", "토"];
@@ -25,8 +25,13 @@ const AddWork = () => {
   const handleCategoryClick = (category) => {
     setSelectedCategory(category);
   };
-  const handleUserClick = (user) => {
-    setSelectedUser(user);
+
+  const handleUserClick = (idx) => {
+    const newSelectedUsers = selectedUsers.includes(idx)
+      ? selectedUsers.filter((userIdx) => userIdx !== idx)
+      : [...selectedUsers, idx];
+
+    setSelectedUsers(newSelectedUsers);
   };
 
   useEffect(() => {
@@ -59,7 +64,9 @@ const AddWork = () => {
         return res.json();
       })
       .then((json) => {
-        console.log(json);
+        var users = [];
+        json["resObj"].map((item) => users.push(item["username"]));
+        setUserList(users);
       });
   }, []);
 
@@ -124,8 +131,8 @@ const AddWork = () => {
               <CategoryButton
                 key={idx}
                 categoryName={item}
-                isSelected={selectedUser === item}
-                onClick={() => handleUserClick(item)}
+                isSelected={selectedUsers.includes(idx)}
+                onClick={() => handleUserClick(idx)}
                 borderRadius="30px"
               />
             ))}
