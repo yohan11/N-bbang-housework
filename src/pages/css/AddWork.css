@@ -1,156 +1,156 @@
 :root {
-  --vh: 100%;
-  --color-lightgrey: #dadada;
-  --color-main: #0fbe62;
+    --vh: 100%;
+    --color-lightgrey: #dadada;
+    --color-main: #0fbe62;
 }
 
 body {
-  margin: 0;
+    margin: 0;
 }
 
 .AddWork {
-  padding: 30px;
+    padding: 30px;
 }
 
 .AddContents {
-  margin-bottom: 20%;
+    margin-bottom: 20%;
 }
 
 .AddContents > div {
-  margin-bottom: 30px;
+    margin-bottom: 30px;
 }
 
 .AddContents > div > input,
 .AddContents > div > textarea {
-  width: 100%;
-  padding: 15px 15px;
-  margin-top: 20px;
+    width: 100%;
+    padding: 15px 15px;
+    margin-top: 20px;
 
-  border: 1px var(--color-lightgrey) solid;
-  border-radius: 13px;
-  box-sizing: border-box;
-  overflow: scroll;
+    border: 1px var(--color-lightgrey) solid;
+    border-radius: 13px;
+    box-sizing: border-box;
+    overflow: scroll;
 }
 
 .AddContents > div > input::placeholder,
 .AddContents > div > textarea::placeholder {
-  color: var(--color-lightgrey);
-  font-size: 1rem;
+    color: var(--color-lightgrey);
+    font-size: 1rem;
 }
 
 .category_boxes {
-  display: flex;
+    display: flex;
 
-  /*부모요소의 패딩을 무시하고 꽉채운 후, 원하는 대로 패딩 추가*/
-  width: 100vw;
-  margin-left: calc(-50vw + 50%);
-  padding-left: 30px;
+    /*부모요소의 패딩을 무시하고 꽉채운 후, 원하는 대로 패딩 추가*/
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    padding-left: 30px;
 
-  overflow: scroll;
+    overflow: scroll;
 }
 
 .category_boxes > button {
-  margin-right: 10px;
+    margin-right: 10px;
 }
 
 .work_description {
-  height: 150px;
+    height: 150px;
 }
 
 /*체크박스 커스텀*/
 .check input[type="checkbox"] {
-  -webkit-appearance: none;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  position: relative;
-  width: 20px;
-  height: 20px;
-  cursor: pointer;
-  outline: none !important;
+    -webkit-appearance: none;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    position: relative;
+    width: 28px;
+    height: 28px;
+    cursor: pointer;
+    outline: none !important;
 
-  border-radius: 3px;
-  vertical-align: middle;
-  background-color: var(--color-lightgrey);
+    border-radius: 3px;
+    vertical-align: middle;
+    background-color: var(--color-lightgrey);
 }
 
 .check input[type="checkbox"]::before {
-  content: "\2713";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  overflow: hidden;
-  transform: scale(0) translate(-50%, -50%);
-  line-height: 1;
+    content: "\2713";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    overflow: hidden;
+    transform: scale(0) translate(-50%, -50%);
+    line-height: 1;
 }
 
 .check input[type="checkbox"]:checked {
-  background-color: var(--color-main);
-  border-color: rgba(255, 255, 255, 0.3);
-  color: white;
+    background-color: var(--color-main);
+    border-color: rgba(255, 255, 255, 0.3);
+    color: white;
 }
 
 .check input[type="checkbox"]:checked::before {
-  border-radius: 4px;
-  transform: scale(1) translate(-50%, -50%);
+    border-radius: 4px;
+    transform: scale(1) translate(-50%, -50%);
 }
 
 .time_title {
-  align-items: center;
+    align-items: center;
 }
 
 /*토글스위치 커스텀*/
 .wrapper {
-  position: relative;
+    position: relative;
 }
 
 #switch {
-  position: absolute;
-  /* hidden */
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
+    position: absolute;
+    /* hidden */
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
 }
 
 .switch_label {
-  position: relative;
-  cursor: pointer;
-  display: inline-block;
-  width: 42px;
-  height: 24px;
-  background: var(--color-lightgrey);
-  border: none;
-  border-radius: 20px;
-  transition: 0.2s;
+    position: relative;
+    cursor: pointer;
+    display: inline-block;
+    width: 42px;
+    height: 24px;
+    background: var(--color-lightgrey);
+    border: none;
+    border-radius: 20px;
+    transition: 0.2s;
 }
 
 .switch_label:hover {
-  background: var(--color-lightgrey);
+    background: var(--color-lightgrey);
 }
 
 .onf_btn {
-  position: absolute;
-  top: 2.5px;
-  left: 3px;
-  display: inline-block;
-  width: 19px;
-  height: 19px;
-  border-radius: 20px;
-  background: #ffffff;
-  transition: 0.2s;
+    position: absolute;
+    top: 2.5px;
+    left: 3px;
+    display: inline-block;
+    width: 19px;
+    height: 19px;
+    border-radius: 20px;
+    background: #ffffff;
+    transition: 0.2s;
 }
 
 /* checking style */
 #switch:checked + .switch_label {
-  background: var(--color-main);
+    background: var(--color-main);
 }
 
 #switch:checked + .switch_label:hover {
-  background: var(--color-main);
+    background: var(--color-main);
 }
 
 /* move */
 #switch:checked + .switch_label .onf_btn {
-  left: 20px;
-  background: #fff;
-  box-shadow: 1px 2px 3px #00000020;
+    left: 20px;
+    background: #fff;
+    box-shadow: 1px 2px 3px #00000020;
 }
