@@ -1,25 +1,31 @@
 .MainHeader {
-  display: flex;
-  align-items: center;
-
-  margin-top: 5%;
-
-  font-family: Pretendard;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-top: 5%;
+    font-family: Pretendard;
 }
 
-.house_info {
-  margin: auto;
+.header-title {
+    margin: auto;
+    font-size: 1.1rem;
 }
 
 .MainHeader > .right_icon > img {
 }
 
 .right_icon {
-  margin-top: 2%;
-  font-size: 32px;
+    display: flex;
+    align-items: center;
+}
+
+.right_icon ion-icon {
+    margin-top: 2px;
+    font-size: 23px;
+    color: #000;
 }
 
 .left_icon {
-  display: flex;
-  align-items: center;
+    display: flex;
+    align-items: center;
 }
