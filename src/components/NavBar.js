@@ -48,14 +48,16 @@ const NavBar = () => {
             }
           ></ion-icon>
         </Link>
-        <ion-icon
-          name="person-circle"
-          style={
-            params.includes("user")
-              ? icon_backgroundColor_selected
-              : icon_backgroundColor_unselected
-          }
-        ></ion-icon>
+        <Link to="/mypage">
+          <ion-icon
+            name="person-circle"
+            style={
+              params.includes("mypage")
+                ? icon_backgroundColor_selected
+                : icon_backgroundColor_unselected
+            }
+          ></ion-icon>
+        </Link>
       </div>
     </div>
   );

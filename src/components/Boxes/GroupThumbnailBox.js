@@ -26,7 +26,7 @@ const GroupThumbnailBox = (props) => {
               userImage={
                 item["profileImageUrl"].includes(".jpg")
                   ? item["profileImageUrl"]
-                  : "/img/user_icon.png"
+                  : "/img/user_icon.jpeg"
               }
             />
           ))}
