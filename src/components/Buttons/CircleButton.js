@@ -1,11 +1,11 @@
 import "./css/CircleButton.css";
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 
 const CircleButton = () => {
   return (
     <div className="CircleButton">
       <Link to="/add-work">
-        <img src="/img/add-outline_icon.png" />
+        <ion-icon name="add-circle"></ion-icon>
       </Link>
     </div>
   );

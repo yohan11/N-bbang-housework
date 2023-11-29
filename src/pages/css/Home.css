@@ -1,49 +1,48 @@
 .Home {
-  padding: 30px;
-  margin-bottom: 20%;
-
-  overflow: hidden;
+    padding: 20px;
+    margin-bottom: 20%;
+    overflow: hidden;
 }
 
 .group_boxes {
-  display: flex;
+    display: flex;
 
-  /*부모요소의 패딩을 무시하고 꽉채운 후, 원하는 대로 패딩 추가*/
-  width: 100vw;
-  margin-left: calc(-50vw + 50%);
-  padding-left: 30px;
+    /*부모요소의 패딩을 무시하고 꽉채운 후, 원하는 대로 패딩 추가*/
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    padding-left: 30px;
 
-  overflow: scroll;
+    overflow: scroll;
 }
 
 .date_boxes {
-  display: flex;
-  justify-content: space-between;
+    display: flex;
+    justify-content: space-between;
 }
 
 .todo_list_title {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .nav {
-  position: relative;
+    position: relative;
 }
 
 .groupAddBox {
-  width: 100%;
-  padding: 0 40%;
-  margin-right: 5%;
+    width: 100%;
+    padding: 0 40%;
+    margin-right: 5%;
 
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-  background-color: #bdbdbd;
-  color: white;
-  font-size: 4rem;
-  font-weight: 300;
-  border-radius: 20px;
+    background-color: #bdbdbd;
+    color: white;
+    font-size: 4rem;
+    font-weight: 300;
+    border-radius: 20px;
 }
