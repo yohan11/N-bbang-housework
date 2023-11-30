@@ -3,11 +3,11 @@ import "./css/Home.css";
 import GroupThumbnailBox from "../components/Boxes/GroupThumbnailBox";
 import TodoWorkBox from "../components/Boxes/TodoWorkBox";
 import NavBar from "../components/NavBar";
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 import Calander from "../components/Others/Calander";
-import React, { useEffect, useState } from "react";
+import React, {useEffect, useState} from "react";
 import MainModal from "../components/Others/MainModal";
-import { api } from "../config";
+import {api} from "../config";
 
 const Home = () => {
   const [houseInfoList, setHouseInfoList] = useState([]);
@@ -90,7 +90,7 @@ const Home = () => {
 
   return (
     <div className="Home">
-      <MainHeader pageName="Home" />
+      <MainHeader pageName="Home"/>
       <div className="MainContent mt3">
         <div className="group_boxes displayFlex">
           {houseInfoList.map((item) => (
@@ -109,7 +109,7 @@ const Home = () => {
             className="groupAddBox"
             onClick={() => setActiveGroupAddModal(true)}
           >
-            +
+            <ion-icon name="add"></ion-icon>
           </div>
           <MainModal
             activeModal={activeGroupAddModal}
@@ -133,24 +133,24 @@ const Home = () => {
             }}
           />
         </div>
-        <Calander />
+        <Calander/>
         <div className="todo_list mt3">
           <div className="todo_list_title">
             <span className="ftM boldTxt">오늘의 할일</span>
-            <Link to="/work-list" style={{ textDecoration: "none" }}>
+            <Link to="/work-list" style={{textDecoration: "none"}}>
               <span className="ftXsm regularTxt grayText">전체보기</span>
             </Link>
           </div>
           <div className="mt2">
             {todoWorkList.map((item, idx) => (
-              <TodoWorkBox todoWorkName={item["title"]} />
+              <TodoWorkBox todoWorkName={item["title"]}/>
             ))}
           </div>
         </div>
       </div>
 
       <div className="nav">
-        <NavBar />
+        <NavBar/>
       </div>
     </div>
   );
