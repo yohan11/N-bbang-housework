@@ -59,7 +59,7 @@ hr {
 }
 
 .mypage-info .title {
-    font-weight: normal;
+    font-family: Pretendard-Bold;
 }
 
 .mypage-list ul {
@@ -83,6 +83,7 @@ hr {
     width: 100px;
     height: 120px;
     font-size: 0.9rem;
+    font-family: Pretendard-Bold;
     background-color: #e7e7f3;
     display: inline-block;
     box-sizing: border-box;
