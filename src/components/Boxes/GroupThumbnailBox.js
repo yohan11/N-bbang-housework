@@ -15,7 +15,7 @@ const GroupThumbnailBox = (props) => {
   return (
     <div className="GroupThumbnailBox mr2" style={group_image}>
       <span className="boldTxt whiteTxt ftM">{props.groupName} 하우스</span>
-      <span className="regularTxt whiteTxt ftSm mt1">
+      <span className="thinTxt whiteTxt ftSm mt05">
         {props.remainTodoListCnt}개의 할일이 남아 있어요!
       </span>
       <div className="displayFlex">

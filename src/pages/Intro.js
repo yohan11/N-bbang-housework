@@ -1,8 +1,9 @@
 import "./css/Intro.css";
 import BottomButton from "../components/Buttons/BottomButton";
-import { useEffect, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
-import { api, generateTokenApiUrl } from "../config";
+import {useEffect, useState} from "react";
+import {useLocation, useNavigate} from "react-router-dom";
+import {api, generateTokenApiUrl} from "../config";
+
 const Intro = () => {
   const [kakaoLoginUrl, setKakaoLoginUrl] = useState();
   const [naverLoginUrl, setNaverLoginUrl] = useState();
@@ -124,7 +125,7 @@ const Intro = () => {
     if (userRole) {
       if (userRole === "UNAUTH") {
         navigate("/home");
-      } else if (userRole === "AUTH") {
+      } else {
         navigate("/home");
       }
     }
@@ -134,17 +135,17 @@ const Intro = () => {
     <div className="Intro">
       <div className="intro_title">
         <div className="ft2Xlg boldTxt whiteTxt textLeft">
-          집안일, 어떻게 <br />
+          집안일, 어떻게 <br/>
           분담하고 계신가요?
         </div>
         <div className="intro_subtitle ftLg boldTxt whiteTxt textLeft mt2">
           앱을 통해 쉽고 간편하게
-          <br />
+          <br/>
           집안일을 분담해보세요.
         </div>
       </div>
       <video muted autoPlay loop className="intro_video">
-        <source src="/video/intro.mp4" type="video/mp4" />
+        <source src="/video/intro.mp4" type="video/mp4"/>
       </video>
 
       <div className="loginButtons">

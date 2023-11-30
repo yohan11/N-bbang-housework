@@ -146,6 +146,10 @@ body {
     font-size: 0.5rem;
 }
 
+.mt05 {
+    margin-top: 5px;
+}
+
 .mt1 {
     margin-top: 10px;
 }
@@ -169,6 +173,7 @@ body {
 .ml2 {
     margin-left: 20px;
 }
+
 
 .mr2 {
     margin-right: 20px;
