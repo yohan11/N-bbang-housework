@@ -7,9 +7,12 @@ import NoticeBox from "../components/Boxes/NoticeBox";
 import React, { useEffect, useState } from "react";
 import MainModal from "../components/Others/MainModal";
 import { api } from "../config";
+import { useParams } from "react-router-dom";
 
 const WorkList = () => {
   const [todoWorkList, setTodoWorkList] = useState([]);
+  const params = useParams();
+  const selectedGroupId = params.id;
 
   const [activeConfirmModal, setActiveConfirmModal] = useState(false);
   const [noticeHidden, setNoticehidden] = useState(false);
@@ -18,7 +21,7 @@ const WorkList = () => {
   const refreshToken = sessionStorage.getItem("refreshToken");
 
   useEffect(() => {
-    fetch(`${api.TODO_GET_API + "1"}?date=${"2023-11-16"}`, {
+    fetch(`${api.TODO_GET_API + selectedGroupId}?date=${"2023-11-16"}`, {
       method: "GET",
       headers: {
         "content-type": "application/json",

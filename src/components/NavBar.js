@@ -1,8 +1,8 @@
 import "./NavBar.css";
 import CircleButton from "./Buttons/CircleButton";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
-const NavBar = () => {
+const NavBar = (props) => {
   var params = window.location.href;
 
   const icon_backgroundColor_selected = {
@@ -16,7 +16,9 @@ const NavBar = () => {
 
   return (
     <div className="NavBar">
-      {!params.includes("add-work") && !params.includes("gift-shop") && <CircleButton/>}
+      {!params.includes("add-work") && !params.includes("gift-shop") && (
+        <CircleButton selectedGroupId={props.selectedGroupId} />
+      )}
       <div className="menus">
         <Link to="/home">
           <ion-icon

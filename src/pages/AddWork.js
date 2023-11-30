@@ -4,6 +4,7 @@ import MainHeader from "../components/Headers/MainHeader";
 import CategoryButton from "../components/Buttons/CategoryButton";
 import BottomButton from "../components/Buttons/BottomButton";
 import { api } from "../config";
+import { useParams } from "react-router-dom";
 
 const AddWork = () => {
   const [categoryList, setCategoryList] = useState([]);
@@ -11,6 +12,10 @@ const AddWork = () => {
 
   const [selectedCategory, setSelectedCategory] = useState("");
   const [selectedUsers, setSelectedUsers] = useState([]);
+  const params = useParams();
+  const selectedGroupId = params.id;
+
+  console.log(selectedGroupId);
 
   const date = new Date();
   const dayName = ["일", "월", "화", "수", "목", "금", "토"];
@@ -18,7 +23,6 @@ const AddWork = () => {
     dayName[date.getDay()]
   }요일`;
 
-  const [groupId, setGroupId] = useState("1");
   const accessToken = sessionStorage.getItem("accessToken");
   const refreshToken = sessionStorage.getItem("refreshToken");
 
@@ -53,7 +57,7 @@ const AddWork = () => {
   }, []);
 
   useEffect(() => {
-    fetch(api.HOUSEWORK_MANAGER_GET_API + groupId, {
+    fetch(api.HOUSEWORK_MANAGER_GET_API + selectedGroupId, {
       method: "GET",
       headers: {
         "content-type": "application/json",
@@ -64,14 +68,17 @@ const AddWork = () => {
         return res.json();
       })
       .then((json) => {
-        var users = [];
-        json["resObj"].map((item) => users.push(item["username"]));
-        setUserList(users);
+        if (json && json["resObj"]) {
+          // null 또는 undefined가 아닌지 확인
+          var users = [];
+          json["resObj"].map((item) => users.push(item["username"]));
+          setUserList(users);
+        }
       });
   }, []);
 
   const addWork = () => {
-    fetch(api.ADD_WORK_POST_API + groupId, {
+    fetch(api.ADD_WORK_POST_API + selectedGroupId, {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -127,15 +134,16 @@ const AddWork = () => {
         <div>
           <div className="boldTxt ftM mt4">담당자</div>
           <div className="category_boxes mt2">
-            {userList.map((item, idx) => (
-              <CategoryButton
-                key={idx}
-                categoryName={item}
-                isSelected={selectedUsers.includes(idx)}
-                onClick={() => handleUserClick(idx)}
-                borderRadius="30px"
-              />
-            ))}
+            {userList &&
+              userList.map((item, idx) => (
+                <CategoryButton
+                  key={idx}
+                  categoryName={item}
+                  isSelected={selectedUsers.includes(idx)}
+                  onClick={() => handleUserClick(idx)}
+                  borderRadius="30px"
+                />
+              ))}
           </div>
         </div>
         <div>

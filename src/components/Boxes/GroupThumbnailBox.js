@@ -13,7 +13,11 @@ const GroupThumbnailBox = (props) => {
     backgroundSize: "cover",
   };
   return (
-    <div className="GroupThumbnailBox mr2" style={group_image}>
+    <div
+      className="GroupThumbnailBox mr2"
+      style={group_image}
+      onClick={props.onClick}
+    >
       <span className="boldTxt whiteTxt ftM">{props.groupName} 하우스</span>
       <span className="regularTxt whiteTxt ftSm mt1">
         {props.remainTodoListCnt}개의 할일이 남아 있어요!

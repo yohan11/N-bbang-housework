@@ -18,7 +18,7 @@ const Home = () => {
   const refreshToken = sessionStorage.getItem("refreshToken");
 
   const [joinCode, setJoinCode] = useState("");
-  const groupId = "1";
+  const [selectedGroupId, setSelectedGroupId] = useState("1");
   const handleInputChange = (event) => {
     setJoinCode(event.target.value);
   };
@@ -38,6 +38,7 @@ const Home = () => {
         var houseList = [];
         json["resObj"].map((item) => {
           houseList.push({
+            groupId: item["id"].toString(),
             name: item["name"],
             progressPercent: item["progressPercent"],
             remainTodoListCnt: item["remainTodoListCnt"],
@@ -49,7 +50,7 @@ const Home = () => {
   }, []);
 
   useEffect(() => {
-    fetch(`${api.TODO_GET_API + "1"}?date=${"2023-11-16"}`, {
+    fetch(`${api.TODO_GET_API + selectedGroupId}?date=${"2023-11-16"}`, {
       method: "GET",
       headers: {
         "content-type": "application/json",
@@ -62,7 +63,7 @@ const Home = () => {
       .then((json) => {
         setTodoWorkList(json["resObj"]["todoList"]);
       });
-  }, []);
+  }, [selectedGroupId]);
 
   const joinGroup = (joinCode) => {
     fetch(`${api.GROUP_JOIN_API}?joinCode=${joinCode}`, {
@@ -102,6 +103,7 @@ const Home = () => {
               progressStatus={item["progressPercent"]}
               remainTodoListCnt={item["remainTodoListCnt"]}
               groupMembers={item["groupMembers"]}
+              onClick={() => setSelectedGroupId(item["groupId"])}
             />
           ))}
 
@@ -137,20 +139,24 @@ const Home = () => {
         <div className="todo_list mt3">
           <div className="todo_list_title">
             <span className="ftM boldTxt">오늘의 할일</span>
-            <Link to="/work-list" style={{ textDecoration: "none" }}>
+            <Link
+              to={`/work-list/${selectedGroupId}`}
+              style={{ textDecoration: "none" }}
+            >
               <span className="ftXsm regularTxt grayText">전체보기</span>
             </Link>
           </div>
           <div className="mt2">
-            {todoWorkList.map((item, idx) => (
-              <TodoWorkBox todoWorkName={item["title"]} />
-            ))}
+            {todoWorkList &&
+              todoWorkList.map((item, idx) => (
+                <TodoWorkBox todoWorkName={item["title"]} />
+              ))}
           </div>
         </div>
       </div>
 
       <div className="nav">
-        <NavBar />
+        <NavBar selectedGroupId={selectedGroupId} />
       </div>
     </div>
   );

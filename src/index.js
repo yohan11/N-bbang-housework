@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import {BrowserRouter, Route, Routes} from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import SignUp from "./pages/SignUp";
 import Home from "./pages/Home";
 import AddWork from "./pages/AddWork";
@@ -15,14 +15,14 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
     <Routes>
-      <Route path="/" element={<App/>}></Route>
-      <Route exact path="KAKAO/login" element={<App/>}/>
-      <Route path="signup" element={<SignUp/>}></Route>
-      <Route path="home" element={<Home/>}></Route>
-      <Route path="add-work" element={<AddWork/>}></Route>
-      <Route path="work-list" element={<WorkList/>}></Route>
-      <Route path="gift-shop" element={<GiftShop/>}></Route>
-      <Route path="mypage" element={<MyPage/>}></Route>
+      <Route path="/" element={<App />}></Route>
+      <Route exact path="KAKAO/login" element={<App />} />
+      <Route path="signup" element={<SignUp />}></Route>
+      <Route path="home" element={<Home />}></Route>
+      <Route path="add-work/:id" element={<AddWork />}></Route>
+      <Route path="work-list/:id" element={<WorkList />}></Route>
+      <Route path="gift-shop" element={<GiftShop />}></Route>
+      <Route path="mypage" element={<MyPage />}></Route>
     </Routes>
   </BrowserRouter>,
 );
