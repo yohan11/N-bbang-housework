@@ -54,8 +54,8 @@ const WorkList = () => {
         onRequestCloseFunc={() => setActiveConfirmModal(false)}
         modalTop="30%"
         isPreviewImg={true}
-        modalImage="/img/mission_photo.png"
-        titleText={`${"준영"}님이 ${"수건개기"}를 완료했어요!`}
+        modalImage="/img/dummy_todo.png"
+        titleText={`${"준영"}님이 ${"설거지"}를 완료했어요!`}
         contentText={
           <div>
             잘 수행 했다면 인증 완료,
