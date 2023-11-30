@@ -18,7 +18,7 @@ const NoticeBox = (props) => {
       <ion-icon name="notifications" style={notice_icon_style}></ion-icon>
       <div className="ml2">
         <div className="ftSm regularTxt whiteTxt">
-          준영님이 수건개기를 완료했어요!
+          준영님이 설거지를 완료했어요!
         </div>
         <div className="notice_subtxt ftXsm thinTxt whiteTxt ">
           제대로 했는지 확인하러 가볼까요?
