@@ -15,8 +15,6 @@ const AddWork = () => {
   const params = useParams();
   const selectedGroupId = params.id;
 
-  console.log(selectedGroupId);
-
   const date = new Date();
   const dayName = ["일", "월", "화", "수", "목", "금", "토"];
   const todayStr = `${date.getMonth() + 1}월 ${date.getDate()}일 ${

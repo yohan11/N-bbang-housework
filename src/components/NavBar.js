@@ -30,7 +30,7 @@ const NavBar = (props) => {
             }
           ></ion-icon>
         </Link>
-        <Link to="/work-list">
+        <Link to={`/work-list/${props.selectedGroupId}`}>
           <ion-icon
             name="checkmark-circle"
             style={
