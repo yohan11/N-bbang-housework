@@ -12,7 +12,7 @@ import { useParams } from "react-router-dom";
 const WorkList = () => {
   const [todoWorkList, setTodoWorkList] = useState([]);
   const params = useParams();
-  const selectedGroupId = params.id;
+  const selectedGroupId = sessionStorage.getItem("groupId");
 
   const [activeConfirmModal, setActiveConfirmModal] = useState(false);
   const [noticeHidden, setNoticehidden] = useState(false);
@@ -41,9 +41,10 @@ const WorkList = () => {
       <MainHeader pageName="할 일 목록" />
       <Calander />
       <div className="mt2">
-        {todoWorkList.map((item, idx) => (
-          <TodoWorkBox todoWorkName={item["title"]} />
-        ))}
+        {todoWorkList &&
+          todoWorkList.map((item, idx) => (
+            <TodoWorkBox todoWorkName={item["title"]} />
+          ))}
       </div>
       <NoticeBox
         onClick={() => {
@@ -74,7 +75,7 @@ const WorkList = () => {
           setActiveConfirmModal(false);
         }}
       />
-      <NavBar />
+      <NavBar selectedGroupId={selectedGroupId} />
     </div>
   );
 };

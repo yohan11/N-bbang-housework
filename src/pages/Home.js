@@ -3,11 +3,11 @@ import "./css/Home.css";
 import GroupThumbnailBox from "../components/Boxes/GroupThumbnailBox";
 import TodoWorkBox from "../components/Boxes/TodoWorkBox";
 import NavBar from "../components/NavBar";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import Calander from "../components/Others/Calander";
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import MainModal from "../components/Others/MainModal";
-import {api} from "../config";
+import { api } from "../config";
 
 const Home = () => {
   const [houseInfoList, setHouseInfoList] = useState([]);
@@ -18,7 +18,9 @@ const Home = () => {
   const refreshToken = sessionStorage.getItem("refreshToken");
 
   const [joinCode, setJoinCode] = useState("");
-  const [selectedGroupId, setSelectedGroupId] = useState("1");
+  const [selectedGroupId, setSelectedGroupId] = useState(
+    sessionStorage.getItem("groupId") ? sessionStorage.getItem("groupId") : "1",
+  );
   const handleInputChange = (event) => {
     setJoinCode(event.target.value);
   };
@@ -91,7 +93,7 @@ const Home = () => {
 
   return (
     <div className="Home">
-      <MainHeader pageName="Home"/>
+      <MainHeader pageName="Home" />
       <div className="MainContent mt3">
         <div className="group_boxes displayFlex">
           {houseInfoList.map((item) => (
@@ -103,7 +105,10 @@ const Home = () => {
               progressStatus={item["progressPercent"]}
               remainTodoListCnt={item["remainTodoListCnt"]}
               groupMembers={item["groupMembers"]}
-              onClick={() => setSelectedGroupId(item["groupId"])}
+              onClick={() => {
+                sessionStorage.setItem("groupId", item["groupId"]);
+                setSelectedGroupId(sessionStorage.getItem("groupId"));
+              }}
             />
           ))}
 
@@ -111,7 +116,7 @@ const Home = () => {
             className="groupAddBox"
             onClick={() => setActiveGroupAddModal(true)}
           >
-              <ion-icon name="add"></ion-icon>
+            <ion-icon name="add"></ion-icon>
           </div>
           <MainModal
             activeModal={activeGroupAddModal}
@@ -135,18 +140,21 @@ const Home = () => {
             }}
           />
         </div>
-        <Calander/>
+        <Calander />
         <div className="todo_list mt3">
           <div className="todo_list_title">
             <span className="ftM boldTxt">오늘의 할일</span>
-            <Link to={`/work-list/${selectedGroupId}`} style={{ textDecoration: "none" }}>
+            <Link
+              to={`/work-list/${selectedGroupId}`}
+              style={{ textDecoration: "none" }}
+            >
               <span className="ftXsm regularTxt grayText">전체보기</span>
             </Link>
           </div>
           <div className="mt2">
             {todoWorkList &&
               todoWorkList.map((item, idx) => (
-                <TodoWorkBox todoWorkName={item["title"]}/>
+                <TodoWorkBox todoWorkName={item["title"]} />
               ))}
           </div>
         </div>

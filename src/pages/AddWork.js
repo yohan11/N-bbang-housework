@@ -4,7 +4,6 @@ import MainHeader from "../components/Headers/MainHeader";
 import CategoryButton from "../components/Buttons/CategoryButton";
 import BottomButton from "../components/Buttons/BottomButton";
 import { api } from "../config";
-import { useParams } from "react-router-dom";
 
 const AddWork = () => {
   const [categoryList, setCategoryList] = useState([]);
@@ -12,8 +11,7 @@ const AddWork = () => {
 
   const [selectedCategory, setSelectedCategory] = useState("");
   const [selectedUsers, setSelectedUsers] = useState([]);
-  const params = useParams();
-  const selectedGroupId = params.id;
+  const selectedGroupId = sessionStorage.getItem("groupId");
 
   const date = new Date();
   const dayName = ["일", "월", "화", "수", "목", "금", "토"];
